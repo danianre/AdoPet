@@ -27,7 +27,6 @@
     
 </head>
 <body>
-    <h1>Hola</h1>
     <header class="transparent-header">
         <div class="container__menu">
             <div class="logo">
@@ -63,7 +62,10 @@
                                             <label for="direccion" class="sr-only">Direccion</label>
                                             <input name="direccion" type="text" id="direccion" class="form-control" placeholder="Direccion" >
                                             <label for="genero" class="sr-only">Genero</label>
-                                            <input name="genero" type="number" id="genero" class="form-control" placeholder="Genero" autofocus>
+                                            <select name="genero" id="genero" class="form-control">
+                                                <option value="1">Hombre</option>
+                                                <option value="0">Mujer</option>
+                                            </select>
                                             <label for="correo" class="sr-only">Correo</label>
                                             <input name="correo" type="email" id="correo" class="form-control" placeholder="Correo" autofocus>
                                             <label for="password" class="sr-only">Contraseña</label>

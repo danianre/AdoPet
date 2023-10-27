@@ -44,6 +44,19 @@ window.addEventListener("click", function(e){
     }
 })
 
+//Genero
+document.getElementById('genero').addEventListener('change', function() {
+    var genero = this.value;
+    if (genero === '1') {
+        // Si se selecciona "Hombre", establece el valor a 1 o true
+        document.getElementById('valor_genero').value = '1'; // Aquí colocas el ID de tu campo oculto
+    } else {
+        // Si se selecciona "Mujer", establece el valor a 0 o false
+        document.getElementById('valor_genero').value = '0'; // Aquí colocas el ID de tu campo oculto
+    }
+});
+
+
 //Botones del index leer mas y leer menos
 const botonLeerMas = document.querySelector("input[value='Leer Más']");
 const botonLeerMenos = document.querySelector("input[value='Leer Menos']");
