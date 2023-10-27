@@ -44,12 +44,31 @@ window.addEventListener("click", function(e){
     }
 })
 
-const botonLeerMas = document.querySelector(".leer-mas");
-const textoAdicional = "Texto adicional que deseas mostrar.";
+const botonLeerMas = document.querySelector("input[value='Leer Más']");
+const botonLeerMenos = document.querySelector("input[value='Leer Menos']");
+let textoAdicional = "Te hacemos más fácil la búsqueda de distintos refugios de animales domésticos en Santa Marta";
+let parrafoAgregado = null;
 
 botonLeerMas.addEventListener("click", function () {
     const parrafoAdicional = document.createElement("p");
     parrafoAdicional.textContent = textoAdicional;
     document.querySelector(".text").appendChild(parrafoAdicional);
-    botonLeerMas.style.display = "none"; // Oculta el botón "Leer más"
+    parrafoAgregado = parrafoAdicional; // Guardar referencia al párrafo agregado
+
+    botonLeerMas.style.display = "none";
+    botonLeerMenos.style.display = "inline-block";
+    document.querySelector(".text").appendChild(botonLeerMenos); // Mover el botón "Leer Menos" debajo del párrafo adicional
 });
+
+botonLeerMenos.addEventListener("click", function () {
+    if (parrafoAgregado !== null) {
+        parrafoAgregado.remove(); // Eliminar el párrafo agregado
+    }
+
+    botonLeerMenos.style.display = "none";
+    botonLeerMas.style.display = "inline-block";
+});
+
+// Ocultar el botón "Leer Menos" al inicio (solo se mostrará el botón "Leer Más")
+botonLeerMenos.style.display = "none";
+

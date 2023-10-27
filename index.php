@@ -89,8 +89,8 @@
             <div class="text">
                 <h1>Nosotros</h1>
                 <p>Somos la mejor red de refugios de animales domesticos en Santa Marta!</p>
-                <p>Te hacemos más fácil la búsqueda de distintos refugios de animales domesticos en Santa Marta</p>
                 <input type="button" value="Leer Más">
+                <input type="button" value="Leer Menos">
             </div>
         </div>
         <div>
