@@ -21,6 +21,7 @@
             background-image: url('vista/imagenes/fondo_inicio.jpg'); /* Ruta a tu imagen de fondo */
             background-size: 100% auto; /* Ajusta la imagen para cubrir todo el fondo */
             background-repeat: no-repeat; /* Evita que la imagen se repita */
+            background-color: #554b3f;
         }
     </style>
     
@@ -30,7 +31,7 @@
         <div class="container__menu">
             <div class="logo">
                 <img src="vista/imagenes/logo.png" alt="">
-                <h1 id="titulo">ADOPET</h1>
+                <h1 id="titulo">AdoPet</h1>
             </div>
             <div class="menu">
                 <i class="fas fa-bars" id="btn_menu"></i>
@@ -107,7 +108,24 @@
         </div>
     </div>    
 
-    
+    <div id="circles">
+        <div class="circle">
+            <img src="vista/imagenes/adoptar.png" alt="adoptar" class="circle-image"> 
+            <p class="circle-text">Adoptar</p>
+        </div>
+        <div class="circle">
+            <img src="vista/imagenes/donar.jpg" alt="donar" class="circle-image">
+            <p class="circle-text">Donar</p>
+        </div>
+        <div class="circle">
+            <img src="vista/imagenes/reportar.jpg" alt="reportar" class="circle-image">
+            <p class="circle-text">Reportar</p>
+        </div>
+        <div class="circle">
+            <img src="vista/imagenes/ceder.png" alt="ceder" class="circle-image">
+            <p class="circle-text">Ceder</p>
+        </div>
+    </div>
 
     <script src="vista/js/librerias/jquery-3.3.1.min.js"></script>
     <script src="vista/js/librerias/bootstrap.min.js" ></script>
