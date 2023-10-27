@@ -46,14 +46,13 @@ p{ font-size: 20px;}
 #titulo{
     padding-top: 20px;
     padding-left: 20px;
-    font-size: 40px;
-    color: black;
-    -webkit-text-fill-color:#ff6c00;
+    font-size: 45px;
+    -webkit-text-fill-color:#554b3f;
     -webkit-text-stroke: 2px;
 }
 
 .logo img{
-    width: 60px;
+    width: 15%;
 }
 
 .menu{
@@ -88,7 +87,7 @@ p{ font-size: 20px;}
 }
 
 .cta{
-    background: #ff6c00;
+    background: #ff5733;
     padding: 10px 40px;
     border-radius: 50px;
 }
@@ -227,10 +226,10 @@ p{ font-size: 20px;}
 }
 
 .custom-button { /* botón de inciar sesión y registrarse*/
-    background-color: #ff5733; /* Cambia el color de fondo al que desees */
-    color: #fff; /* Cambia el color del texto */
-    border: none; /* Quita el borde */
-    padding: 10px 20px; /* Ajusta el relleno */
+    background-color: #ff5733;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
     cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
     border-radius: 50px;
 }
@@ -256,22 +255,18 @@ p{ font-size: 20px;}
 #container__cover .text{
     max-width: 30%;
     margin-left: 15%;
-    margin-top: 15%;
+    margin-top: 30%;
 }
 
 #container__cover .text h1{
-    font-size: 55px;
+    font-size: 40px;
     font-weight: 700;
 }
 
 #container__cover .text p{
-    margin-top: 40px;
+    font-size: 15px;
 }
 
-
-#container__cover .svg img{
-    width: 100%;
-}
 
 #container__cover2{
     background-color: beige;
@@ -293,6 +288,59 @@ p{ font-size: 20px;}
 .text2{
     font-size: 30px;
 }
+
+#container__cover .text input{
+    padding: 18px 80px;
+    border: none;
+    font-size: 16px;
+    border-radius: 50px;
+    background: #ff5733;
+    color: #fff;
+    cursor: pointer;
+    transition: all 300ms;
+}
+
+#container__cover .text input:hover{
+    box-shadow: 1px 1px 30px -6px #ff5733;
+}
+
+/* CIRCULOS */
+
+#circles {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: -10%;
+}
+  
+.circle {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-color: #fff;
+    text-align: center;
+}
+
+.circle-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 55%;
+    height: 55%;
+    border-radius: 50%;
+}
+
+.circle-text {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
 
 footer{
     background-color: rgb(219, 219, 219);
@@ -333,10 +381,6 @@ footer{
         background-position: -100px;
     }
 
-    #container__cover .svg img{
-        width: 500px;
-    }
-
 }
 
 @media screen and (max-width: 1020px){
@@ -357,11 +401,6 @@ footer{
 }
 
 @media screen and (max-width: 720px){
-
-    #container__cover .svg img{
-        display: none;
-    }
-
     .imagen2{
         display: none;
     }

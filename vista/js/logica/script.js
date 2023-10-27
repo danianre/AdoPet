@@ -43,3 +43,13 @@ window.addEventListener("click", function(e){
         modalC.style.visibility = "hidden";
     }
 })
+
+const botonLeerMas = document.querySelector(".leer-mas");
+const textoAdicional = "Texto adicional que deseas mostrar.";
+
+botonLeerMas.addEventListener("click", function () {
+    const parrafoAdicional = document.createElement("p");
+    parrafoAdicional.textContent = textoAdicional;
+    document.querySelector(".text").appendChild(parrafoAdicional);
+    botonLeerMas.style.display = "none"; // Oculta el botón "Leer más"
+});
