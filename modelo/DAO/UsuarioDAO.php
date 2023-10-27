@@ -36,14 +36,16 @@ class UsuarioDAO {
                         $data_table[$indice]["idUsuario"],
                         $data_table[$indice]["nombre"],
                         $data_table[$indice]["apellido"],
-                        $data_table[$indice]["fecha_nacimiento"],
-                        $data_table[$indice]["idGenero"],
+                        $data_table[$indice]["fecha_nac"],
                         $data_table[$indice]["correo"],
                         $data_table[$indice]["password"],
+                        $data_table[$indice]["fecha_creacion"],
+                        $data_table[$indice]["cedula"],
                         $data_table[$indice]["telefono"],
                         $data_table[$indice]["direccion"],
                         $data_table[$indice]["foto"],
-                        $data_table[$indice]["administrador"]
+                        $data_table[$indice]["genero"],
+                        $data_table[$indice]["tipo_usuario"]
                         );           
             }
         }
@@ -56,19 +58,20 @@ class UsuarioDAO {
     public function registrarUsuario(Usuario $usuario){
         $data_source = new DataSource();
         
-        $stmt1 = "INSERT INTO usuario VALUES (NULL, :nombre, :apellido, :fecha_nacimiento, :idGenero, :correo, :password, :telefono, :direccion, :foto, :administrador)"; 
+        $stmt1 = "INSERT INTO usuario VALUES (NULL, :nombre, :apellido, :fecha_nac, :correo, :password, :fecha_creacion, :cedula, :telefono, :direccion, :foto, :genero, :tipo_usuario)"; 
         
         $resultado = $data_source->ejecutarActualizacion($stmt1, array(
             ':nombre' => $usuario->getNombre(),
             ':apellido' => $usuario->getApellido(),
-            ':fecha_nacimiento' => $usuario->getFecha_nacimiento(),
-            ':idGenero'=>$usuario->getIdGenero(),
+            ':fecha_nac' => $usuario->getFecha_nac(),
             ':correo'=>$usuario->getCorreo(),
             ':password'=>$usuario->getPassword(),
+            ':fecha_creacion'=>$usuario->getFecha_creacion(),
             ':telefono'=>$usuario->getTelefono(),
             ':direccion'=>$usuario->getDireccion(),
             ':foto'=>$usuario->getFoto(),
-            ':administrador'=>$usuario->esAdministrador()
+            ':genero'=>$usuario->getGenero(),
+            ':tipo_usuario'=>$usuario->getTipo_usuario()
             )
         ); 
       return $resultado;
@@ -88,13 +91,15 @@ class UsuarioDAO {
                     $data_table[$indice]["nombre"],
                     $data_table[$indice]["apellido"],
                     $data_table[$indice]["fecha_nacimiento"],
-                    $data_table[$indice]["idGenero"],
                     $data_table[$indice]["correo"],
                     $data_table[$indice]["password"],
+                    $data_table[$indice]["fecha_creacion"],
+                    $data_table[$indice]["cedula"],
                     $data_table[$indice]["telefono"],
                     $data_table[$indice]["direccion"],
                     $data_table[$indice]["foto"],
-                    $data_table[$indice]["administrador"]
+                    $data_table[$indice]["genero"],
+                    $data_table[$indice]["tipo_usuario"]
                     );
             array_push($usuarios,$usuario);
         }
@@ -124,18 +129,20 @@ class UsuarioDAO {
         //Si $data_table retornó una fila, quiere decir que se encontro el usuario en la base de datos
         if(count($data_table)==1){
             $usuario = new Usuario(
-                    $data_table[0]["idUsuario"],
-                    $data_table[0]["nombre"],
-                    $data_table[0]["apellido"],
-                    $data_table[0]["fecha_nacimiento"],
-                    $data_table[0]["idGenero"],
-                    $data_table[0]["correo"],
-                    $data_table[0]["password"],
-                    $data_table[0]["telefono"],
-                    $data_table[0]["direccion"],
-                    $data_table[0]["foto"],
-                    $data_table[0]["administrador"]
-                    );
+                $data_table[0]["idUsuario"],
+                $data_table[0]["nombre"],
+                $data_table[0]["apellido"],
+                $data_table[0]["fecha_nacimiento"],
+                $data_table[0]["correo"],
+                $data_table[0]["password"],
+                $data_table[0]["fecha_creacion"],
+                $data_table[0]["cedula"],
+                $data_table[0]["telefono"],
+                $data_table[0]["direccion"],
+                $data_table[0]["foto"],
+                $data_table[0]["genero"],
+                $data_table[0]["tipo_usuario"]
+            );
         }
         
         return $usuario;
@@ -150,42 +157,44 @@ class UsuarioDAO {
         //Si $data_table retornó una fila, quiere decir que se encontro el usuario en la base de datos
         if(count($data_table)==1){
             $usuario = new Usuario(
-                    $data_table[0]["idUsuario"],
-                    $data_table[0]["nombre"],
-                    $data_table[0]["apellido"],
-                    $data_table[0]["fecha_nacimiento"],
-                    $data_table[0]["idGenero"],
-                    $data_table[0]["correo"],
-                    $data_table[0]["password"],
-                    $data_table[0]["telefono"],
-                    $data_table[0]["direccion"],
-                    $data_table[0]["foto"],
-                    $data_table[0]["administrador"]
-                    );
+                $data_table[0]["idUsuario"],
+                $data_table[0]["nombre"],
+                $data_table[0]["apellido"],
+                $data_table[0]["fecha_nacimiento"],
+                $data_table[0]["correo"],
+                $data_table[0]["password"],
+                $data_table[0]["fecha_creacion"],
+                $data_table[0]["cedula"],
+                $data_table[0]["telefono"],
+                $data_table[0]["direccion"],
+                $data_table[0]["foto"],
+                $data_table[0]["genero"],
+                $data_table[0]["tipo_usuario"]
+            );
         }
         
         return $usuario;
     }
 
 
-
     public function editarUsuario($usuario){
         $data_source = new DataSource();
         
-        $stmt1 = "UPDATE usuario SET nombre = :nombre, apellido = :apellido, fecha_nacimiento = :fecha_nacimiento, correo = :correo, password = :password, telefono = :telefono, direccion = :direccion, foto = :foto, administrador = :administrador WHERE idUsuario = :idUsuario"; 
+        $stmt1 = "UPDATE usuario SET nombre = :nombre, apellido = :apellido, fecha_nac= :fecha_nac, correo = :correo, password = :password, fecha_creacion = :fecha_creacion, telefono = :telefono, direccion = :direccion, foto = :foto, genero = :genero, tipo_usuario = :tipo_usuario WHERE idUsuario = :idUsuario"; 
         
         $resultado = $data_source->ejecutarActualizacion($stmt1, array(
             ':idUsuario' => $usuario->getIdUsuario(),
             ':nombre' => $usuario->getNombre(),
             ':apellido' => $usuario->getApellido(),
-            ':fecha_nacimiento' => $usuario->getFecha_nacimiento(),
-            ':idGenero'=>$usuario->getIdGenero(),
+            ':fecha_nac' => $usuario->getFecha_nac(),
             ':correo'=>$usuario->getCorreo(),
             ':password'=>$usuario->getPassword(),
+            ':fecha_creacion'=>$usuario->getFecha_creacion(),
             ':telefono'=>$usuario->getTelefono(),
             ':direccion'=>$usuario->getDireccion(),
             ':foto'=>$usuario->getFoto(),
-            ':administrador' => $usuario->esAdministrador()
+            ':genero'=>$usuario->getGenero(),
+            ':tipo_usuario'=>$usuario->getTipo_usuario()
             )
         ); 
 
