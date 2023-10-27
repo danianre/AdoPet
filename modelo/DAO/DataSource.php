@@ -3,7 +3,7 @@
     $host = 'localhost';
     $user = 'root';
     $password = '';
-    $db = 'id18631514_adopet';
+    $db = 'refugios1';
     $conexion = @mysqli_connect($host, $user, $password, $db);
 
 class DataSource {
@@ -14,7 +14,7 @@ class DataSource {
 
         try{
             //Aquí se pasa el nombre del Host(localhost) y el nombre de la base de datos(adopet)
-            $this->cadenaConexion="mysql:host=localhost;dbname=id18631514_adopet;charset=utf8";
+            $this->cadenaConexion="mysql:host=localhost;dbname=refugios1;charset=utf8";
 
             //Aquí se crea la conexion con PDO y se pasan 3 parametros, la cadenaConexion que
             //se habia definido anteriormente, el nombre del usuario que tiene definido MySql(root)
