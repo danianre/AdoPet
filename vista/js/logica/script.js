@@ -44,6 +44,7 @@ window.addEventListener("click", function(e){
     }
 })
 
+//Botones del index leer mas y leer menos
 const botonLeerMas = document.querySelector("input[value='Leer Más']");
 const botonLeerMenos = document.querySelector("input[value='Leer Menos']");
 let textoAdicional = "Te hacemos más fácil la búsqueda de distintos refugios de animales domésticos en Santa Marta";
