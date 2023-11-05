@@ -23,6 +23,7 @@ function registrarUsuario(Usuario $usuario){
     return $usuario;
 }
 
+
 function verUsuarios(){
     $dao=new UsuarioDAO();
 

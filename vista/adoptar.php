@@ -88,16 +88,17 @@
 	<link rel="stylesheet" href="css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
 </head>
 <body>
     <!-- Page Wrapper -->
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav sidebar sidebar-dark accordion" style="background-color: #8F796C;" class="slider" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="principalUser.php">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center"  style="background-color:#584B42;"  href="principalUser.php">
                 <div>
                     <img src="imagenes/logo.png" alt="logo" width="50px">
                 </div>
@@ -110,7 +111,7 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
                 <a class="nav-link" href="principalUser.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                <i class="fas fa-home"></i>
                     <span>INICIO</span></a>
             </li>
 
@@ -118,24 +119,24 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Nav Item - Adoptar -->
-            <li class="nav-item">
-                <a class="nav-link" href="adoptar.php?id=<?php echo $_SESSION["ID_USUARIO"];?>">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Adoptar</span></a>
+             <!-- Nav Item - Adoptar -->
+             <li class="nav-item">
+                <a class="nav-link" href="adoptar.php?id=<?php echo $_SESSION['ID_USUARIO'];?>">
+                <i class="fas fa-heart"></i>
+                    <span style="font-size: 18px;">Adoptar</span></a>
             </li>
 
             <!-- Nav Item - Reportar -->
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                <i class="fas fa-hand-holding-medical"></i>
                     <span>Donar</span></a>
             </li>
 
             <!-- Nav Item - Reportar -->
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                <i class="fas fa-flag"></i>
                     <span>Reportar</span></a>
             </li>
 

@@ -19,7 +19,7 @@
             $_SESSION['ID_USUARIO'] = $user->getIdUsuario();
             $_SESSION['NOMBRE_USUARIO'] = $user->getNombre();
             $_SESSION['APELLIDO_USUARIO'] = $user->getApellido();
-            $_SESSION['FECHA_NACIMIENTO'] = $user->getFecha_nacimiento();
+            $_SESSION['FECHA_NACIMIENTO'] = $user->getFecha_nac();
             $_SESSION['CORREO_USUARIO'] = $user->getCorreo();
             $_SESSION['TELEFONO_USUARIO'] = $user->getTelefono();
             $_SESSION['DIRECCION_USUARIO'] = $user->getDireccion();

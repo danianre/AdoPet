@@ -126,6 +126,13 @@ body {
                   border-radius: 100%;
                 }
 
+                .a.nav-link:hover:hover{
+                  background-color: aqua;
+                  color: aqua;
+                
+                 }
+
+
 @media all and (orientation : landscape) {
   .main-container {
     flex-direction : row;
