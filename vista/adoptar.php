@@ -109,36 +109,41 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="principalUser.php">
-                <i class="fas fa-home"></i>
-                    <span>INICIO</span></a>
+              <!-- Nav Item - Dashboard -->
+              <li class="nav-item" class="prueba">
+                <a class="nav-link" href="principalUser.php"  style="border-radius:30px; " onmouseover="this.style.backgroundColor='#CFC6BF'" onmouseout="this.style.backgroundColor='transparent'">
+                <i style="font-size: 28px;color:black;" class="fas fa-home"></i>
+                    <span style="font-size: 23px; color:black;
+                  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">INICIO</span></a>
             </li>
-
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-             <!-- Nav Item - Adoptar -->
-             <li class="nav-item">
-                <a class="nav-link" href="adoptar.php?id=<?php echo $_SESSION['ID_USUARIO'];?>">
-                <i class="fas fa-heart"></i>
-                    <span style="font-size: 18px;">Adoptar</span></a>
+         <!-- Nav Item - Adoptar -->
+         <li class="nav-item">
+                <a class="nav-link" style="border-radius:30px; " href="adoptar.php?id=<?php echo $_SESSION['ID_USUARIO'];?>"onmouseover="this.style.backgroundColor='#CFC6BF'" onmouseout="this.style.backgroundColor='transparent'">
+                <i style="font-size: 28px;color:black;" class="fas fa-heart"></i>
+                    <span style="font-size: 23px;color:black;
+                  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Adoptar</span></a>
             </li>
 
             <!-- Nav Item - Reportar -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                <i class="fas fa-hand-holding-medical"></i>
-                    <span>Donar</span></a>
+                <a class="nav-link" href="#" style="border-radius:30px; "  onmouseover="this.style.backgroundColor='#CFC6BF'" onmouseout="this.style.backgroundColor='transparent'">
+                <i style="font-size: 28px;color:black;" class="fas fa-hand-holding-medical"></i>
+                    <span style="font-size: 23px;color:black;
+                  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Donar</span></a>
             </li>
 
             <!-- Nav Item - Reportar -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                <i class="fas fa-flag"></i>
-                    <span>Reportar</span></a>
+                <a class="nav-link" href="#" style="border-radius:30px; " onmouseover="this.style.backgroundColor='#CFC6BF'" onmouseout="this.style.backgroundColor='transparent'">
+                <i style="font-size: 28px;color:black;" class="fas fa-flag"></i>
+                    <span style="font-size: 23px;color:black;
+                  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Reportar</span></a>
             </li>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -273,10 +278,10 @@
                         <div class="card h-100 w-50">
                             <?php
                             require_once (__DIR__."../../modelo/DAO/DataSource.php");
-                            $consulta = "SELECT m.idMascota, m.nombre, m.edad_estimada AS edad, m.foto, g.tipo_genero, ta.nombre_tipo, r.nombre AS nRefugio, m.idUsuario_adopta 
-                            FROM mascota m INNER JOIN tipo_animal ta ON m.idTipo_animal = ta.idTipo_animal 
-                                            INNER JOIN genero g ON m.idGenero = g.idGenero 
-                                            INNER JOIN refugio r ON m.idRefugio = r.idRefugio;";
+                            $consulta = "SELECT m.idMascota, m.nombre, AS  m.foto, g.tipo_genero, ta.nombre_tipo, r.nombre AS nRefugio, m.idUsuario_adopta 
+                                         FROM mascota m INNER JOIN tipo_animal ta ON m.idTipo_animal = ta.idTipo_animal 
+                                                INNER JOIN genero g ON m.idGenero = g.idGenero 
+                                                 INNER JOIN refugio r ON m.idRefugio = r.idRefugio;";
                             $query = mysqli_query($conexion, $consulta);
                             $result = mysqli_num_rows($query);
                             while($data = mysqli_fetch_array($query)){

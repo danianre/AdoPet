@@ -10,7 +10,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
-    <link rel="stylesheet" href="css/perfilUsuario.css">
+    <link rel="stylesheet" href="css/perfilUsuarios.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -37,10 +37,10 @@ session_start();
 </head>
 <body>
     <!-- Page Wrapper -->
-    <div id="wrapper">
+    <div id="wrapper" style="position:fixed;width: 100%;" >
 
         <!-- Sidebar -->
-        <ul class="navbar-nav sidebar sidebar-dark accordion" style="background-color: #8F796C;" class="slider" id="accordionSidebar">
+       <ul class="navbar-nav sidebar sidebar-dark accordion" style="background-color: #8F796C; " class="slider" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center"  style="background-color:#584B42;"  href="principalUser.php">
@@ -52,14 +52,14 @@ session_start();
 
                 
             <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+            <hr class="sidebar-divider my-0"  >
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item" class="prueba">
-                <a class="nav-link" href="principalUser.php"  style="border-radius:30px; " onmouseover="this.style.backgroundColor='#CFC6BF'" onmouseout="this.style.backgroundColor='transparent'">
+                <a class="nav-link" href="principalUser.php"  style="border-radius:30px;" onmouseover="this.style.backgroundColor='#CFC6BF'" onmouseout="this.style.backgroundColor='transparent'">
                 <i style="font-size: 28px;color:black;" class="fas fa-home"></i>
                     <span style="font-size: 23px; color:black;
-                  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">INICIO</span></a>
+                  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Inicio</span></a>
             </li>
 
             <!-- Divider -->
@@ -124,13 +124,13 @@ session_start();
             <div id="content">
 
                 <section id="hero" class="d-flex flex-column justify-content-center align-items-left">
-                    <h1><?php if (isset($_SESSION['ID_USUARIO'])) {
+                    <h1 style="color:black;"><?php if (isset($_SESSION['ID_USUARIO'])) {
                                     echo $_SESSION['NOMBRE_USUARIO']; 
                                     echo " ";
                                     echo $_SESSION['APELLIDO_USUARIO'];
                                     }   
                                     ?></h1>
-                    <p>¡Bienvenidos! <span class="typed"></span></p>
+                    <p style="color:black;">¡Bienvenidos! <span class="typed"></span></p>
                 </section><!-- End Hero -->
                     
                 </div>
