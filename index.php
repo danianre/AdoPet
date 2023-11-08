@@ -39,9 +39,9 @@
                 <nav id="nav">
                     <img src="vista/imagenes/logo.png" alt="logo">
                     <ul>
-                        <li><a href="#"></a><div class="unirse">
+                        <li><a href="#"></a><div class="  unirse">
                             <a href="" class="cta">Unirse</a>
-                            <div class="modal-unirse">
+                            <div class="modal-unirse" style="backdrop-filter: blur(10px);">
                                 <div class="modal modal-close">
                                     <p class="close">X</p>
                                     <div class="text-center">

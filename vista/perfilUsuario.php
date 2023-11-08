@@ -139,7 +139,7 @@ if($result_sql == 0){
 
             <!-- Nav Item - Reportar -->
             <li class="nav-item">
-                <a class="nav-link" href="#" style="border-radius:30px; "  onmouseover="this.style.backgroundColor='#CFC6BF'" onmouseout="this.style.backgroundColor='transparent'">
+                <a class="nav-link" href="donar.php" style="border-radius:30px; "  onmouseover="this.style.backgroundColor='#CFC6BF'" onmouseout="this.style.backgroundColor='transparent'">
                 <i style="font-size: 28px;color:black;" class="fas fa-hand-holding-medical"></i>
                     <span style="font-size: 23px;color:black;
                   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Donar</span></a>

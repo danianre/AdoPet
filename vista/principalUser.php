@@ -31,6 +31,7 @@ session_start();
 	<link rel="stylesheet" href="css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/principal.css">
+    <link rel="stylesheet" href="css/sb-admin-2.min.css">
     
 
     
@@ -83,7 +84,7 @@ session_start();
 
             <!-- Nav Item - Reportar -->
             <li class="nav-item">
-                <a class="nav-link" href="#" style="border-radius:30px; "  onmouseover="this.style.backgroundColor='#CFC6BF'" onmouseout="this.style.backgroundColor='transparent'">
+                <a class="nav-link" href="donar.php" style="border-radius:30px; "  onmouseover="this.style.backgroundColor='#CFC6BF'" onmouseout="this.style.backgroundColor='transparent'">
                 <i style="font-size: 28px;color:black;" class="fas fa-hand-holding-medical"></i>
                     <span style="font-size: 23px;color:black;
                   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Donar</span></a>
@@ -183,7 +184,6 @@ session_start();
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <script src="js/logica/administradorUsuarios.js"></script>
 </body>
 </html>
