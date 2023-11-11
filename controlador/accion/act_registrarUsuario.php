@@ -19,7 +19,7 @@
             $registro = registrarUsuario($usuario);
             header("Location: ../../vista/ListaUsuarios.php");
         }else{
-            $usuario = new Usuario(NULL, $nombre, $apellido, $fecha_nac,$genero, $correo, $password, $telefono, $direccion, 0);
+            $usuario = new Usuario(NULL, $nombre, $apellido, $fecha_nac,$telefono,$direccion,$genero,$correo, $password, 0);
             $registro = registrarUsuario($usuario);
             if($registro)
                 header("Location: ../../index.php?msg=Se realizo el registro satisfactoriamente");

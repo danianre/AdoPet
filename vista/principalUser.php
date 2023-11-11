@@ -124,7 +124,7 @@ session_start();
             <!-- Main Content -->
             <div id="content">
 
-                <section id="hero" class="d-flex flex-column justify-content-center align-items-left">
+                <section id="hero" class="d-flex flex-column justify-content-center align-items-left" style=" width: 127%;">
                     <h1 style="color:black;"><?php if (isset($_SESSION['ID_USUARIO'])) {
                                     echo $_SESSION['NOMBRE_USUARIO']; 
                                     echo " ";

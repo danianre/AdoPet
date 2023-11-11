@@ -51,16 +51,19 @@
                                             <input name="nombre" type="text" id="nombre" class="form-control" placeholder="Nombre" autofocus>
                                             <label for="apellido" class="sr-only">Apellido</label>
                                             <input name="apellido" type="text" id="nombre" class="form-control" placeholder="Apellido" autofocus>
-                                            <label for="fecha_nacimiento" class="sr-only">Fecha de Nacimiento</label>
+                                            <label for="fecha_nac" class="sr-only">Fecha de Nacimiento</label>
                                             <div id="asd">
-                                                <input name="fecha_nacimiento" id="fecha_nacimiento" class="form-control" placeholder="Fecha de Nacimiento (AAAA-MM-DD)" >
+                                                <input name="fecha_nac" id="fecha_nacimiento" class="form-control" placeholder="Fecha de Nacimiento (AAAA-MM-DD)" >
                                             </div>
-                                            <label for="cedula" class="sr-only">Correo</label>
+                                            <label for="cedula" class="sr-only">Cedula</label>
                                             <input name="cedula" type="number" id="cedula" class="form-control" placeholder="Cedula" autofocus>
+
                                             <label for="telefono" class="sr-only">Telefono</label>
                                             <input name="telefono" type="text" id="telefono" class="form-control" placeholder="Telefono" >
+
                                             <label for="direccion" class="sr-only">Direccion</label>
                                             <input name="direccion" type="text" id="direccion" class="form-control" placeholder="Direccion" >
+                                            
                                             <label for="genero" class="sr-only">Genero</label>
                                             <select name="genero" id="genero" class="form-control">
                                                 <option value="1">Hombre</option>

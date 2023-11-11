@@ -157,9 +157,9 @@ session_start();
                 <img class="imagen-refugio" src="imagenes/refugios1.jpg" alt="Imagen del refugio">
                 <div class="informacion-refugio">
                     <!-- Aquí coloca la información del refugio -->
-                    Dirección: Calle Ejemplo, Ciudad
+                    Dirección: Avenida del Sol, 123
                     Teléfono: (123) 456-7890
-                    Correo electrónico: refugio@example.com
+                    Correo electrónico: refugio1@example.com
                 </div>
                 <a class="boton-solicitar" href="#">Solicitar Donación</a>
             </div>
@@ -171,9 +171,9 @@ session_start();
                 <img class="imagen-refugio" src="imagenes/refugios2.jpg" alt="Imagen del refugio">
                 <div class="informacion-refugio">
                     <!-- Aquí coloca la información del refugio -->
-                    Dirección: Calle Ejemplo, Ciudad
-                    Teléfono: (123) 456-7890
-                    Correo electrónico: refugio@example.com
+                    Dirección: Calle Primavera, 456
+                    Teléfono: (123) 326-6580
+                    Correo electrónico: refugio3@example.com
                 </div>
                 <a class="boton-solicitar" href="#">Solicitar Donación</a>
             </div>
@@ -187,9 +187,9 @@ session_start();
                 <img class="imagen-refugio" src="imagenes/refugios3.jpg" alt="Imagen del refugio">
                 <div class="informacion-refugio">
                     <!-- Aquí coloca la información del refugio -->
-                    Dirección: Calle Ejemplo, Ciudad
-                    Teléfono: (123) 456-7890
-                    Correo electrónico: refugio@example.com
+                    Dirección: Boulevard de la Luna, 789
+                    Teléfono: (123) 256-7870
+                    Correo electrónico: refugio2@example.com
                 </div>
                 <a class="boton-solicitar" href="#">Solicitar Donación</a>
             </div>
@@ -201,9 +201,9 @@ session_start();
                 <img class="imagen-refugio" src="imagenes/refugios4.jpg" alt="Imagen del refugio">
                 <div class="informacion-refugio">
                     <!-- Aquí coloca la información del refugio -->
-                    Dirección: Calle Ejemplo, Ciudad
-                    Teléfono: (123) 456-7890
-                    Correo electrónico: refugio@example.com
+                    Dirección: Camino del Bosque, 012
+                    Teléfono: (123) 986-7890
+                    Correo electrónico: refugio4@example.com
                 </div>
                 <a class="boton-solicitar" href="#">Solicitar Donación</a>
             </div>

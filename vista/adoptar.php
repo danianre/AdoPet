@@ -1,7 +1,7 @@
 <?php
-    session_start();
+session_start();
 //     require_once (__DIR__."/../modelo/DAO/DataSource.php");
-    
+
 // if(!empty($_POST)){
 //     if(!empty($_POST['nombre']) || !empty($_POST['edad_estimada']) || !empty($_POST['foto']) || !empty($_POST['idGenero']) || !empty($_POST['idTipo_animal']) || !empty($_POST['idRefugio']) || !empty($_POST['idUsuario_adopta'])){
 //         $idUsuario = $_POST['idUsuario'];
@@ -18,7 +18,7 @@
 //         $sql_update = mysqli_query($conexion, "UPDATE mascota 
 //                                                 SET idUsuario_adopta = '$idUsuario'
 //                                                 WHERE idMascota = $idMascota");
-        
+
 //         if($sql_update){
 //             header("Location: adoptar.php?msg=Se ha adoptado");
 //         }else{
@@ -60,6 +60,7 @@
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -70,7 +71,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link href="css/gijgo.css" rel="stylesheet" type="text/css"/>
+    <link href="css/gijgo.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -84,21 +85,25 @@
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/bootstrap-grid.min.css">
-	<link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/adoptar.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+
 </head>
-<body>
+
+<body style="background-image: url('imagenes/fondo-home.jpg'); background-size: cover; background-position: center; position:relative;">
     <!-- Page Wrapper -->
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav sidebar sidebar-dark accordion" style="background-color: #8F796C;" class="slider" id="accordionSidebar">
+        <ul class="navbar-nav sidebar sidebar-dark accordion" style="background-color: #8F796C;" class="slider"
+            id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center"  style="background-color:#584B42;"  href="principalUser.php">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" style="background-color:#584B42;"
+                href="principalUser.php">
                 <div>
                     <img src="imagenes/logo.png" alt="logo" width="50px">
                 </div>
@@ -109,38 +114,51 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-              <!-- Nav Item - Dashboard -->
-              <li class="nav-item" class="prueba">
-                <a class="nav-link" href="principalUser.php"  style="border-radius:30px; " onmouseover="this.style.backgroundColor='#CFC6BF'" onmouseout="this.style.backgroundColor='transparent'">
-                <i style="font-size: 28px;color:black;" class="fas fa-home"></i>
-                    <span style="font-size: 23px; color:black;
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item" class="prueba">
+                <a class="nav-link" href="principalUser.php" style="border-radius:30px; "
+                    onmouseover="this.style.backgroundColor='#CFC6BF'"
+                    onmouseout="this.style.backgroundColor='transparent'">
+                    <i style="font-size: 28px;color:black;" class="fas fa-home"></i>
+                    <span
+                        style="font-size: 23px; color:black;
                   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">INICIO</span></a>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-         <!-- Nav Item - Adoptar -->
-         <li class="nav-item">
-                <a class="nav-link" style="border-radius:30px; " href="adoptar.php?id=<?php echo $_SESSION['ID_USUARIO'];?>"onmouseover="this.style.backgroundColor='#CFC6BF'" onmouseout="this.style.backgroundColor='transparent'">
-                <i style="font-size: 28px;color:black;" class="fas fa-heart"></i>
-                    <span style="font-size: 23px;color:black;
+            <!-- Nav Item - Adoptar -->
+            <li class="nav-item">
+                <a class="nav-link" style="border-radius:30px; "
+                    href="adoptar.php?id=<?php echo $_SESSION['ID_USUARIO']; ?>"
+                    onmouseover="this.style.backgroundColor='#CFC6BF'"
+                    onmouseout="this.style.backgroundColor='transparent'">
+                    <i style="font-size: 28px;color:black;" class="fas fa-heart"></i>
+                    <span
+                        style="font-size: 23px;color:black;
                   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Adoptar</span></a>
             </li>
 
             <!-- Nav Item - Reportar -->
             <li class="nav-item">
-                <a class="nav-link" href="donar.php" style="border-radius:30px; "  onmouseover="this.style.backgroundColor='#CFC6BF'" onmouseout="this.style.backgroundColor='transparent'">
-                <i style="font-size: 28px;color:black;" class="fas fa-hand-holding-medical"></i>
-                    <span style="font-size: 23px;color:black;
+                <a class="nav-link" href="donar.php" style="border-radius:30px; "
+                    onmouseover="this.style.backgroundColor='#CFC6BF'"
+                    onmouseout="this.style.backgroundColor='transparent'">
+                    <i style="font-size: 28px;color:black;" class="fas fa-hand-holding-medical"></i>
+                    <span
+                        style="font-size: 23px;color:black;
                   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Donar</span></a>
             </li>
 
             <!-- Nav Item - Reportar -->
             <li class="nav-item">
-                <a class="nav-link" href="#" style="border-radius:30px; " onmouseover="this.style.backgroundColor='#CFC6BF'" onmouseout="this.style.backgroundColor='transparent'">
-                <i style="font-size: 28px;color:black;" class="fas fa-flag"></i>
-                    <span style="font-size: 23px;color:black;
+                <a class="nav-link" href="#" style="border-radius:30px; "
+                    onmouseover="this.style.backgroundColor='#CFC6BF'"
+                    onmouseout="this.style.backgroundColor='transparent'">
+                    <i style="font-size: 28px;color:black;" class="fas fa-flag"></i>
+                    <span
+                        style="font-size: 23px;color:black;
                   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Reportar</span></a>
             </li>
 
@@ -160,10 +178,10 @@
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
-            <div id="content">
+            <div id="content" style="width: 100%;">
 
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <!-- Topbar 
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">-->
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <form class="form-inline">
@@ -172,7 +190,7 @@
                         </button>
                     </form>
 
-                    <!-- Topbar Search -->
+                    <!-- Topbar Search 
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
@@ -184,7 +202,7 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form>-->
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -215,22 +233,26 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a id="nombreUsuario" class="nav-link dropdown-toggle" href="#" id="userDropdown" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a id="nombreUsuario" style="width: 120px; right: -332px;top:15px; position: absolute;" class="nav-link dropdown-toggle" href="#" id="userDropdown"
+                                id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                <?php if (isset($_SESSION['ID_USUARIO'])) {
-                                    echo "<img class='fotoUsuario' src='./fotoUsuario/".$_SESSION['FOTO_USUARIO']."' alt='foto' width='50px'>";
+                                    <?php if (isset($_SESSION['ID_USUARIO'])) {
+                                        echo "<img class='fotoUsuario' src='./fotoUsuario/" . $_SESSION['FOTO_USUARIO'] . "' alt='foto' width='50px'>";
                                     }
-                                ?> </span>
-                               
+                                    ?>
+                                </span>
+
                                 <?php if (isset($_SESSION['ID_USUARIO'])) {
                                     echo $_SESSION['NOMBRE_USUARIO'];
-                                    }   
-                                    ?>
+                                }
+                                ?>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="perfilUsuario.php?id=<?php echo $_SESSION["ID_USUARIO"];?>">
+                                <a class="dropdown-item"
+                                    href="perfilUsuario.php?id=<?php echo $_SESSION["ID_USUARIO"]; ?>">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Perfil
                                 </a>
@@ -248,65 +270,144 @@
                 <!-- End of Topbar -->
             </div>
             <!-- End of Main Content -->
-            
+
             <!-- Logout Modal-->
             <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">¿Listo para salir?</h5>
-                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
-                            <div class="modal-footer">
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                                <a class="btn btn-primary" href="../controlador/accion/act_logout.php">Cerrar Sesión</a>
-                            </div>
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">¿Listo para salir?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar
+                            su sesión actual.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                            <a class="btn btn-primary" href="../controlador/accion/act_logout.php">Cerrar Sesión</a>
                         </div>
                     </div>
                 </div>
+            </div>
 
-            
-            <!-- Section Adoptar-->
-        <section class="py-5">
+
+
+
+
+            <h1 class="title-donar">ADOPTAR</h1>
+
+            <!-- Content-->
+            <div class="grupo-cajas-refugio1">
+                <div class="caja-refugio">
+                    <div class="nombre-refugio">
+                    Rottweiler
+                    </div>
+                    <img class="imagen-refugio" src="imagenes/mascota1.jpg" alt="Imagen del refugio">
+                    <div class="informacion-refugio">
+                        <!-- Aquí coloca la información del refugio -->
+                        Raza: 
+                        Teléfono: (123) 456-7890
+                        Correo electrónico: refugio@example.com
+                    </div>
+                    <a class="boton-solicitar" href="#">Solicitar Donación</a>
+                </div>
+
+                <div class="caja-refugio">
+                    <div class="nombre-refugio">
+                    Doberman
+                    </div>
+                    <img class="imagen-refugio" src="imagenes/mascota2.jpg" alt="Imagen del refugio">
+                    <div class="informacion-refugio">
+                        <!-- Aquí coloca la información del refugio -->
+                        Dirección: Calle Ejemplo, Ciudad
+                        Teléfono: (123) 456-7890
+                        Correo electrónico: refugio@example.com
+                    </div>
+                    <a class="boton-solicitar" href="#">Solicitar Donación</a>
+                </div>
+            </div>
+
+            <div class="grupo-cajas-refugio2">
+                <div class="caja-refugio">
+                    <div class="nombre-refugio">
+                    Siamés
+                    </div>
+                    <img class="imagen-refugio" src="imagenes/mascota3.jpg" alt="Imagen del refugio">
+                    <div class="informacion-refugio">
+                        <!-- Aquí coloca la información del refugio -->
+                        Dirección: Calle Ejemplo, Ciudad
+                        Teléfono: (123) 456-7890
+                        Correo electrónico: refugio@example.com
+                    </div>
+                    <a class="boton-solicitar" href="#">Solicitar Donación</a>
+                </div>
+
+                <div class="caja-refugio">
+                    <div class="nombre-refugio">
+                    British Shorthair
+                    </div>
+                    <img class="imagen-refugio" src="imagenes/mascota4.jpg" alt="Imagen del refugio">
+                    <div class="informacion-refugio">
+                        <!-- Aquí coloca la información del refugio -->
+                        Dirección: Calle Ejemplo, Ciudad
+                        Teléfono: (123) 456-7890
+                        Correo electrónico: refugio@example.com
+                    </div>
+                    <a class="boton-solicitar" href="#">Solicitar Donación</a>
+                </div>
+
+            </div>
+            <!-- End of Topbar -->
+
+            <!--  Section Adoptar
+           <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-ocntent-center">
-                    <div class="col mb-5">
-                        <div class="card h-100 w-50">
-                            <?php
-                            require_once (__DIR__."../../modelo/DAO/DataSource.php");
-                            $consulta = "SELECT m.idMascota, m.nombre, AS  m.foto, g.tipo_genero, ta.nombre_tipo, r.nombre AS nRefugio, m.idUsuario_adopta 
-                                         FROM mascota m INNER JOIN tipo_animal ta ON m.idTipo_animal = ta.idTipo_animal 
-                                                INNER JOIN genero g ON m.idGenero = g.idGenero 
-                                                 INNER JOIN refugio r ON m.idRefugio = r.idRefugio;";
-                            $query = mysqli_query($conexion, $consulta);
-                            $result = mysqli_num_rows($query);
-                            while($data = mysqli_fetch_array($query)){
-                            ?>
+               <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-ocntent-center">
+                        <div class="col mb-5">
+                            <div class="card h-100 w-50" style="background-color:white;height:100%!important">
+                                <?php
+                                require_once(__DIR__ . "../../modelo/DAO/DataSource.php");
+                                $consulta = "SELECT m.idMascota, m.nombre,  m.foto,m.genero_m, m.tipo_mascota, r.nombre as nRefugio
+                              FROM mascota m 
+                                  INNER JOIN refugio r ON m.idRefugio = r.idRefugio;";
+                                $query = mysqli_query($conexion, $consulta);
+                                $result = mysqli_num_rows($query);
+                                while ($data = mysqli_fetch_array($query)) {
+                                    ?>
+
+
+                     
+
                             
-                            <!-- Sale badge-->
-                            <div class="badge bg-dark text-white" style="top: 0.5rem; right: 0.5rem"><?php echo 'Refugio: '; echo $data["nRefugio"];?></div>
-                            <!-- Pet image-->
-                            <?php echo "<img class='card-img-top' src='./fotoUsuario/".$data['foto']."' alt='fotoMascota' height='280px' width='200px'/>"?>
-                            <!-- Pet details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Pet name-->
-                                    <h5 class="fw-bolder"><?php echo $data["nombre"];?></h5>
-                                    <!-- Pet price-->
-                                    <?php echo $data["nombre_tipo"];?> - <?php echo $data["tipo_genero"];?>
-                                    <br>
-                                    <?php echo '<b> Fecha estimada de nacimiento: </b>' ; echo $data["edad"];?> 
-                                </div>
-                            </div>
-                            
-                            <!-- Pet actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">      
-                            <form class="form-eliminar" method="post" action="" >
-                                <!-- <input type="hidden" name="idMascota" value="<?php echo $idmasc; ?>">
+                                   Sale badge-->
+                <div class="badge bg-dark text-white" style="top: 0.5rem; right: 0.5rem">
+                    <?php echo 'Refugio: ';
+                    echo $data["nRefugio"]; ?>
+                </div>
+                <!-- Pet image-->
+                <?php echo "<img class='card-img-top' src='./fotoUsuario/" . $data['foto'] . "' alt='fotoMascota' height='280px' width='200px'/>" ?>
+                <!-- Pet details-->
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <!-- Pet name-->
+                        <h5 class="fw-bolder">
+                            <?php echo $data["m.nombre"]; ?>
+                        </h5>
+                        <!-- Pet price-->
+                        <?php echo $data["m.tipo_mascota"]; ?> -
+                        <?php echo $data["m.genero_m"]; ?>
+                        <br>
+                        <?php echo '<b> Fecha estimada de nacimiento: </b>';
+                        echo $data["edad_estimada"]; ?>
+                    </div>
+                </div>
+
+                <!-- Pet actions
+                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                        <form class="form-eliminar" method="post" action="">
+                                            <input type="hidden" name="idMascota" value="<?php echo $idmasc; ?>">
                                 <input type="hidden" name="nombre" value="<?php echo $nombre; ?>">
                                 <input type="hidden" name="edad_estimada" value="<?php echo $edad_estimada; ?>">
                                 <input type="hidden" name="foto" value="<?php echo $foto; ?>">
@@ -314,23 +415,23 @@
                                 <input type="hidden" name="idTipo_animal" value="<?php echo $idTipo_animal; ?>">
                                 <input type="hidden" name="idRefugio" value="<?php echo $idRefugio; ?>">
                                 <input type="hidden" name="idUsuario_adopta" value="<?php echo $idUsuario_adopta; ?>"> -->
-                                <input class="btn  btn-primary btn-block " type="submit" value="Adoptar">
-                                </form>
-                            </div>
-                            <?php
-                            }
-                            ?>
-                        </div>
-                    </div>
-                </div>
+                <input class="btn  btn-primary btn-block " type="submit" value="Adoptar">
+                </form>
             </div>
-        </section>
+            <?php
+                                }
+                                ?>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
 
-    
+
     <script src="js/librerias/jquery-3.3.1.min.js"></script>
-    <script src="js/librerias/gijgo.min.js" ></script>    
+    <script src="js/librerias/gijgo.min.js"></script>
     <script src="js/logica/registrar.js"></script>
-    <script src="js/librerias/sweetAlert.js" ></script>  
+    <script src="js/librerias/sweetAlert.js"></script>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -352,4 +453,5 @@
     <script src="js/logica/administradorUsuarios.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
