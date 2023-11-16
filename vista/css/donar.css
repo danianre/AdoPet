@@ -1,6 +1,6 @@
 .title-donar{
     position: absolute;
-    z-index: 80000;
+    z-index: 100;
     left: 50%;
     color: #000000;
     top: 20px;
@@ -78,6 +78,7 @@
     right: -90px;
     top: -90px;
     position: relative;
+    z-index: 100;
 
 }
 
@@ -85,5 +86,30 @@
     left: -90px;
     top: -90px;
     position: relative;
+    z-index: 100;
+
+}
+
+@media (max-width: 1580px ) {
+    /* Estilos adicionales para pantallas de hasta 1680px de ancho */
+    .grupo-cajas-refugio1 {
+        position: relative;
+        left: -30px;
+        top: -45px;
+        transition: 1s;
+        transform: scale(0.89);
+    }
+    .grupo-cajas-refugio2 {
+        position: relative;
+        left: -100px;
+        top: -45px;
+        transition: 1s;
+        transform: scale(0.89);
+    }
+    
+.title-donar{
+    top: 50px;
+    transition: 1s;
+}
 
 }

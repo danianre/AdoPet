@@ -31,14 +31,12 @@ session_start();
 	<link rel="stylesheet" href="css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/principal.css">
-    <link rel="stylesheet" href="css/sb-admin-2.min.css">
-    
 
     
 </head>
 <body>
     <!-- Page Wrapper -->
-    <div id="wrapper" style="position:fixed;width: 100%;" >
+    <div id="wrapper">
 
         <!-- Sidebar -->
        <ul class="navbar-nav sidebar sidebar-dark accordion" style="background-color: #8F796C; " class="slider" id="accordionSidebar">
@@ -100,7 +98,7 @@ session_start();
 
             <!-- Nav Item - Cerrar sesión -->
             <li class="nav-item">
-            <a  class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal"  style="border-radius:30px; " onmouseover="this.style.backgroundColor='#CFC6BF'" onmouseout="this.style.backgroundColor='transparent'" >
+            <a  class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal"  style="border-radius:30px; "onmouseover="this.style.backgroundColor='#CFC6BF'"    onmouseout="this.style.backgroundColor='transparent'" >
                 <i style="font-size: 28px;color:black;" class="fas fa-sign-out-alt fa-sm fa-fw mr-2 "></i>
                 <span style="font-size: 22px ;color:black; 
                   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;" >Cerrar Sesión</span></a>
@@ -131,13 +129,13 @@ session_start();
                                     echo $_SESSION['APELLIDO_USUARIO'];
                                     }   
                                     ?></h1>
-                    <p style="color:black;">¡Bienvenidos! <span class="typed"></span></p>
+                    <p style="color:black;">¡Bienvenido! <span class="typed"></span></p>
                 </section><!-- End Hero -->
                     
                 </div>
                 
                 <!-- End of Topbar -->
-                
+              
                 <!-- Logout Modal-->
                 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
@@ -184,6 +182,7 @@ session_start();
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src="js/logica/administradorUsuarios.js"></script>
 </body>
 </html>

@@ -100,7 +100,7 @@ if ($result_sql == 0) {
 </head>
 
 <body
-    style="background-image: url('imagenes/fondo-home.jpg'); background-size: cover; background-position: center; position:relative;">
+    style="background-image: url('imagenes/fondo-home.jpg'); background-size: cover; background-position: center; position:relative;overflow: hidden; ">
     <!-- Page Wrapper -->
     <div id="wrapper" style=" background: none;width: 100%;">
 
@@ -135,7 +135,13 @@ if ($result_sql == 0) {
 
             <!-- Divider -->
             <hr class="sidebar-divider">
-
+            <!-- Nav Item - Perfil -->
+            <li class="nav-item">
+                <a class="nav-link" style="border-radius:30px; " href="perfilUsuario.php?id=<?php echo $_SESSION["ID_USUARIO"];?>"  onmouseover="this.style.backgroundColor='#CFC6BF'" onmouseout="this.style.backgroundColor='transparent'">
+                <i style="font-size: 28px;color:black;" class="fas fa-user"></i>
+                    <span style="font-size: 23px;color:black;
+                  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Perfil</span></a>
+            </li>
             <!-- Nav Item - Adoptar -->
             <li class="nav-item">
                 <a class="nav-link" style="border-radius:30px; "
@@ -147,6 +153,8 @@ if ($result_sql == 0) {
                         style="font-size: 23px;color:black;
                   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Adoptar</span></a>
             </li>
+
+            
 
             <!-- Nav Item - Reportar -->
             <li class="nav-item">
@@ -218,10 +226,11 @@ if ($result_sql == 0) {
 
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow" style="left:1515px; top:10px; font-size:25px;">
-                        <a style="color:black;"onmouseover="this.style.color='brown'" onmouseout="this.style.color='black'"
-                            id="nombreUsuario" class="nav-link dropdown-toggle" href="#" id="userDropdown"
-                            id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a style="color:black;" onmouseover="this.style.color='brown'"
+                            onmouseout="this.style.color='black'" id="nombreUsuario" class="nav-link dropdown-toggle"
+                            href="#" id="userDropdown" id="navbarDropdown" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                                 <?php if (isset($_SESSION['ID_USUARIO'])) {
                                     echo "<img class='fotoUsuario' src='./fotoUsuario/" . $_SESSION['FOTO_USUARIO'] . "' alt='foto' width='50px'>";

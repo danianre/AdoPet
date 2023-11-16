@@ -42,7 +42,7 @@ session_start();
 <body
     style="background-image: url('imagenes/fondo-home.jpg'); background-size: cover; background-position: center; position:relative;">
     <!-- Page Wrapper -->
-    <div id="wrapper" style="position:fixed;width: 100%;">
+    <div id="wrapper">
 
         <!-- Sidebar -->
         <ul class="navbar-nav sidebar sidebar-dark accordion" style="background-color: #8F796C; " class="slider"
@@ -146,7 +146,7 @@ session_start();
         <!-- End of Sidebar -->
 
 
-            <h1 class="title-donar">DONAR</h1>
+        <h1 class="title-donar">DONAR</h1>
 
         <!-- Content-->
         <div class="grupo-cajas-refugio1">
