@@ -3,39 +3,41 @@ require_once (__DIR__."/../modelo/DAO/DataSource.php");
 session_start();
 if(!empty($_POST)){
     $alert= '';
-    if(!empty($_POST['nombre']) || !empty($_POST['apellido']) || !empty($_POST['fecha_nacimiento']) || !empty($_POST['idGenero']) || !empty($_POST['correo']) || !empty($_POST['telefono']) || !empty($_POST['direccion']) || !empty($_POST['foto']) || !empty($_POST['administrador'])){
+    if(!empty($_POST['nombre']) || !empty($_POST['apellido']) || !empty($_POST['fecha_nac']) || !empty($_POST['correo']) || !empty($_POST['cedula']) || !empty($_POST['telefono']) || !empty($_POST['direccion']) || !empty($_POST['foto']) || !empty($_POST['genero']) || !empty($_POST['tipo_usuario'])){
         $idUsuario = $_POST['idUsuario'];
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
-        $fecha_nacimiento = $_POST['fecha_nacimiento'];
-        $idGenero = $_POST['idGenero'];
+        $fecha_nac = $_POST['fecha_nac'];
         $correo = $_POST['correo'];
         $password = md5($_POST['password']);
+        $fecha_creacion = $_POST['fecha_creacion'];
+        $cedula = $_POST['cedula'];
         $telefono = $_POST['telefono'];
         $direccion = $_POST['direccion'];
         $foto = $_POST['foto'];
-        $administrador= $_POST['administrador'];
+        $genero = $_POST['genero'];
+        $tipo_usuario= $_POST['tipo_usuario'];
 
         $query = mysqli_query($conexion, "SELECT * FROM usuario WHERE (correo = '$correo' AND idUsuario != $idUsuario) OR (telefono = '$telefono' AND idUsuario != $idUsuario)");
         $result = mysqli_fetch_array($query);
         
         if($result > 0){
-            header("Location: perfilAdmin.php");
+            header("Location: perfilAdmin.php?id=$idUsuario");
         }else{
             if(empty($_POST['password'])){
                 $sql_update = mysqli_query($conexion, "UPDATE usuario 
-                                                       SET nombre = '$nombre', apellido = '$apellido', fecha_nacimiento = '$fecha_nacimiento', correo = '$correo', telefono = '$telefono', direccion = '$direccion', foto = '$foto'
+                                                       SET nombre = '$nombre', apellido = '$apellido', fecha_nac = '$fecha_nac', correo = '$correo', cedula = '$cedula', telefono = '$telefono', direccion = '$direccion', foto = '$foto'
                                                        WHERE idUsuario = $idUsuario ");
             }else{
-                $sql_update = mysqli_query($conexion, "UPDATE usuario 
-                                                       SET nombre = '$nombre', apellido = '$apellido', fecha_nacimiento = '$fecha_nacimiento', correo = '$correo', password = '$password', telefono = '$telefono', direccion = '$direccion', foto = '$foto'
-                                                       WHERE idUsuario = $idUsuario ");
+            $sql_update = mysqli_query($conexion, "UPDATE usuario 
+                                                   SET nombre = '$nombre', apellido = '$apellido', fecha_nac = '$fecha_nac', correo = '$correo', cedula = '$cedula', password = '$password', telefono = '$telefono', direccion = '$direccion', foto = '$foto'
+                                                   WHERE idUsuario = $idUsuario ");
             }
             
             if($sql_update){
-                header("Location: ListaUsuarios.php");
+                header("Location: ListaUsuarios.php?id=$idUsuario");
             }else{
-                header("Location: perfilAdmin.php");
+                header("Location: perfilAdmin.php?id=$idUsuario");
             }
         }
     }
@@ -44,28 +46,32 @@ if(!empty($_POST)){
 //Mostrar datos
 if(empty($_REQUEST['id']))
 {
-    header('Location: perfilAdmin.php');
+    header("Location: perfilAdmin.php?id=$idUsuario");
     //mysqli_close($conexion);
 }
 $iduser = $_REQUEST['id'];
-$sql = mysqli_query($conexion, "SELECT idUsuario, nombre, apellido, fecha_nacimiento, correo, password, telefono, direccion, foto
+$sql = mysqli_query($conexion, "SELECT idUsuario, nombre, apellido, fecha_nac, correo, password, fecha_creacion, cedula,telefono, direccion, foto, genero                                
                                 FROM usuario
                                 WHERE idUsuario = $iduser");
 //mysqli_close($conexion);
 $result_sql = mysqli_num_rows($sql);
 
 if($result_sql == 0){
-    header('Location: perfilAdmin.php');
+    header("Location: perfilAdmin.php?id=$idUsuario");
 }else{
     while($data = mysqli_fetch_array($sql)){
         $iduser = $data['idUsuario']; 
         $nombre = $data['nombre'];
         $apellido = $data['apellido'];
-        $fecha_nacimiento = $data['fecha_nacimiento'];
+        $fecha_nac = $data['fecha_nac'];
         $correo = $data['correo'];
+        $fecha_creacion = $data['fecha_creacion'];
+        $cedula = $data['cedula'];
         $telefono = $data['telefono'];
         $direccion = $data['direccion'];
         $foto = $data['foto'];
+        $genero = $data['genero'];
+        $tipo_usuario = $data['tipo_usuario'];
     }
 }
 ?>

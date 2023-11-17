@@ -19,13 +19,17 @@
             $_SESSION['ID_USUARIO'] = $user->getIdUsuario();
             $_SESSION['NOMBRE_USUARIO'] = $user->getNombre();
             $_SESSION['APELLIDO_USUARIO'] = $user->getApellido();
-            $_SESSION['FECHA_NACIMIENTO'] = $user->getFecha_nacimiento();
+            $_SESSION['FECHA_NAC'] = $user->getFecha_nac();
             $_SESSION['CORREO_USUARIO'] = $user->getCorreo();
+            $_SESSION['FECHA_CREACION'] = $user->getFecha_creacion();
+            $_SESSION['CEDULA_USUARIO'] = $user->getCedula();
             $_SESSION['TELEFONO_USUARIO'] = $user->getTelefono();
             $_SESSION['DIRECCION_USUARIO'] = $user->getDireccion();
             $_SESSION['FOTO_USUARIO'] = $user->getFoto();
+            $_SESSION['GENERO_USUARIO'] = $user->getGenero();
+            $_SESSION['TIPO_USUARIO'] = $user->getTipo_usuario();
 
-            if($user->esAdministrador() == 1){
+            if($user->getTipo_usuario() == 1){
                 header("Location: ../../vista/principal.php");                
             }else{
                 header("Location: ../../vista/principalUser.php");

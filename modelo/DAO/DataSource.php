@@ -1,10 +1,10 @@
 <?php
-//Con esta clase se logra la conexión con la base de datos
-    $host = 'localhost';
-    $user = 'root';
-    $password = '';
-    $db = 'refugios1';
-    $conexion = @mysqli_connect($host, $user, $password, $db);
+// //Con esta clase se logra la conexión con la base de datos
+//     $host = 'localhost';
+//     $user = 'root';
+//     $password = '';
+//     $db = 'id18631514_adopet';
+//     $conexion = @mysqli_connect($host, $user, $password, $db);
 
 class DataSource {
     private $cadenaConexion;
@@ -14,12 +14,12 @@ class DataSource {
 
         try{
             //Aquí se pasa el nombre del Host(localhost) y el nombre de la base de datos(adopet)
-            $this->cadenaConexion="mysql:host=localhost;dbname=refugios1;charset=utf8";
+            $this->cadenaConexion="mysql:host=localhost;dbname=id18631514_adopet;charset=utf8";
 
             //Aquí se crea la conexion con PDO y se pasan 3 parametros, la cadenaConexion que
             //se habia definido anteriormente, el nombre del usuario que tiene definido MySql(root)
             //y el último parámetro es la contraseña del mysql
-            $this->conexion = new PDO($this->cadenaConexion,"root","");
+            $this->conexion = new PDO($this->cadenaConexion,"id18631514_user_adopet","Adopet123.");
 
         } catch (PDOException $ex) {
 

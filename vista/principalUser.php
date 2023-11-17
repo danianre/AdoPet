@@ -74,7 +74,7 @@ session_start();
                     <span>Adoptar</span></a>
             </li>
 
-            <!-- Nav Item - Reportar -->
+            <!-- Nav Item - Donar -->
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-chart-area"></i>
@@ -86,6 +86,13 @@ session_start();
                 <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Reportar</span></a>
+            </li>
+
+            <!-- Nav Item - Ceder -->
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Ceder</span></a>
             </li>
 
             <!-- Nav Item - Cerrar sesión -->
