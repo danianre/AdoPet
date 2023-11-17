@@ -233,7 +233,46 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-            <!-- End of Topbar -->
+            <!-- modal amscota -->
+            <div id="modalSolicitudDonacion" class="modal" style="backdrop-filter: blur(5px);">
+            <div class="contenedor-modal">
+
+                <div class="modal-contenido">
+                    <?php foreach ($resultado as $row) { ?>
+                        <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+                        <h2>
+                            <?php echo $row['nombre']; ?>
+                        </h2>
+                        <p>Completa el siguiente formulario para solicitar una donación.</p>
+                        <?php
+                        $foto = $row['foto'];
+                        $imagen = "imagenes/refugios/{$foto}";
+                        if (!file_exists($imagen)) {
+                            $imagen = "imagenes/nofoto.jpg";
+                        }
+                        ?>
+                        <img class="imagen-refugio" src="<?php echo $imagen; ?>" alt="Imagen del refugio"
+                            data-id="<?php echo $row['idRefugio']; ?>" onclick="abrirModal(event)">
+                        <!-- Aquí puedes agregar tu formulario de solicitud de donación -->
+                        <div class="informacion-refugio">
+                            <!-- Aquí coloca la información del refugio -->
+                            Dirección:
+                            <?php echo $row['direccion']; ?><br>
+                            Teléfono:
+                            <?php echo $row['telefono']; ?><br>
+                            Correo electrónico:
+                            <?php echo $row['correo']; ?><br>
+                        </div>
+                        <form id="formularioDonacion">
+                            <!-- Campos del formulario -->
+                            <!-- ... -->
+                            <input type="submit" value="Enviar Solicitud">
+                        </form>
+                    <?php } ?>
+                </div>
+
+            </div>
+        </div>
 
             <!--  Section Adoptar
           
@@ -249,6 +288,10 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     <script src="js/logica/registrar.js"></script>
     <script src="js/librerias/sweetAlert.js"></script>
      Bootstrap core JavaScript-->
+     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/logica/modal_adoptar.js"></script>
             <script src="vendor/jquery/jquery.min.js"></script>
             <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 

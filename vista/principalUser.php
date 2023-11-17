@@ -80,7 +80,7 @@ session_start();
                   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Adoptar</span></a>
             </li>
 
-            <!-- Nav Item - Donar -->
+            <!-- Nav Item - Reportar -->
             <li class="nav-item">
                 <a class="nav-link" href="donar.php" style="border-radius:30px; "  onmouseover="this.style.backgroundColor='#CFC6BF'" onmouseout="this.style.backgroundColor='transparent'">
                 <i style="font-size: 28px;color:black;" class="fas fa-hand-holding-medical"></i>
@@ -94,13 +94,6 @@ session_start();
                 <i style="font-size: 28px;color:black;" class="fas fa-flag"></i>
                     <span style="font-size: 23px;color:black;
                   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Reportar</span></a>
-            </li>
-
-            <!-- Nav Item - Ceder -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Ceder</span></a>
             </li>
 
             <!-- Nav Item - Cerrar sesión -->

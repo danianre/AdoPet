@@ -1,8 +1,16 @@
 <?php
-//Se obtiene la sesión existente
 session_start();
+require 'config/config.php';
+require 'config/database.php';
+$db = new Database();
+$con = $db->conectar();
 
+$sql = $con->prepare("SELECT idRefugio,nombre, direccion, correo, telefono, foto, capacidad, comentarios
+                    FROM refugio WHERE activo =1");
+$sql->execute();
+$resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -11,7 +19,6 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
-    <link rel="stylesheet" href="css/perfilUsuarios.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -30,25 +37,13 @@ session_start();
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="css/sb-admin-2.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/principal.css">
     <link rel="stylesheet" href="css/donar.css">
-    <link rel="stylesheet" href="css/sb-admin-2.min.css">
+    <link rel="stylesheet" href="css/perfilUsuarios.css">
 
-    <style>
-        #mostrar-formulario{
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1000;
-            background-color: white;
-            padding: 20px;
 
-        }
-    </style>    
-    
 
 </head>
 
@@ -162,67 +157,79 @@ session_start();
         <h1 class="title-donar">DONAR</h1>
 
         <!-- Content-->
-        <div class="grupo-cajas-refugio1">
-            <div class="caja-refugio">
-                <div class="nombre-refugio">
-                    Refugio1
-                </div>
-                <img class="imagen-refugio" src="imagenes/refugios1.jpg" alt="Imagen del refugio">
-                <div class="informacion-refugio">
-                    <!-- Aquí coloca la información del refugio -->
-                    Dirección: Avenida del Sol, 123
-                    Teléfono: (123) 456-7890
-                    Correo electrónico: refugio1@example.com
-                </div>
-                <a class="boton-solicitar" href="#" onclick="mostrarFormulario('mostrar-formulario')">Solicitar Donación</a>
-            </div>
+        <div class="contenedor-adoptar">
+            <?php foreach ($resultado as $row) { ?>
+                <div class="caja-refugio">
+                    <div class="nombre-refugio">
+                        <?php echo $row['nombre']; ?>
+                    </div>
+                    <?php
+                    $foto = $row['foto'];
+                    $imagen = "imagenes/refugios/{$foto}";
+                    if (!file_exists($imagen)) {
+                        $imagen = "imagenes/nofoto.jpg";
+                    }
+                    ?>
+                    <img class="imagen-refugio" src="<?php echo $imagen; ?>" alt="Imagen del refugio"
+                        data-id="<?php echo $row['idRefugio']; ?>" onclick="abrirModal(event)">
+                    <div class="informacion-refugio">
+                        <!-- Aquí coloca la información del refugio -->
+                        Dirección:
+                        <?php echo $row['direccion']; ?><br>
+                        Teléfono:
+                        <?php echo $row['telefono']; ?><br>
+                        Correo electrónico:
+                        <?php echo $row['correo']; ?><br>
+                    </div>
+                    <!-- Modifica el enlace para llamar a la función abrirModal() -->
+                    <a class="boton-solicitar" href="#">Solicitar Donación</a>
 
-            <div class="caja-refugio">
-                <div class="nombre-refugio">
-                    Refugio3
                 </div>
-                <img class="imagen-refugio" src="imagenes/refugios2.jpg" alt="Imagen del refugio">
-                <div class="informacion-refugio">
-                    <!-- Aquí coloca la información del refugio -->
-                    Dirección: Calle Primavera, 456
-                    Teléfono: (123) 326-6580
-                    Correo electrónico: refugio3@example.com
-                </div>
-                <a class="boton-solicitar" href="#" onclick="mostrarFormulario('mostrar-formulario')">Solicitar Donación</a>
-            </div>
-        </div>
-
-        <div class="grupo-cajas-refugio2">
-            <div class="caja-refugio">
-                <div class="nombre-refugio">
-                    Refugio2
-                </div>
-                <img class="imagen-refugio" src="imagenes/refugios3.jpg" alt="Imagen del refugio">
-                <div class="informacion-refugio">
-                    <!-- Aquí coloca la información del refugio -->
-                    Dirección: Boulevard de la Luna, 789
-                    Teléfono: (123) 256-7870
-                    Correo electrónico: refugio2@example.com
-                </div>
-                <a class="boton-solicitar" href="#" onclick="mostrarFormulario('mostrar-formulario')">Solicitar Donación</a>
-            </div>
-
-            <div class="caja-refugio">
-                <div class="nombre-refugio">
-                    Refugio4
-                </div>
-                <img class="imagen-refugio" src="imagenes/refugios4.jpg" alt="Imagen del refugio">
-                <div class="informacion-refugio">
-                    <!-- Aquí coloca la información del refugio -->
-                    Dirección: Camino del Bosque, 012
-                    Teléfono: (123) 986-7890
-                    Correo electrónico: refugio4@example.com
-                </div>
-                <a class="boton-solicitar" href="#" onclick="mostrarFormulario('mostrar-formulario')">Solicitar Donación</a>
-            </div>
-
+            <?php } ?>
         </div>
         <!-- End of Topbar -->
+
+
+        <div id="modalSolicitudDonacion" class="modal" style="backdrop-filter: blur(5px);">
+            <div class="contenedor-modal">
+
+                <div class="modal-contenido">
+                    <?php foreach ($resultado as $row) { ?>
+                        <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+                        <h2>
+                            <?php echo $row['nombre']; ?>
+                        </h2>
+                        <p>Completa el siguiente formulario para solicitar una donación.</p>
+                        <?php
+                        $foto = $row['foto'];
+                        $imagen = "imagenes/refugios/{$foto}";
+                        if (!file_exists($imagen)) {
+                            $imagen = "imagenes/nofoto.jpg";
+                        }
+                        ?>
+                        <img class="imagen-refugio" src="<?php echo $imagen; ?>" alt="Imagen del refugio"
+                            data-id="<?php echo $row['idRefugio']; ?>" onclick="abrirModal(event)">
+                        <!-- Aquí puedes agregar tu formulario de solicitud de donación -->
+                        <div class="informacion-refugio">
+                            <!-- Aquí coloca la información del refugio -->
+                            Dirección:
+                            <?php echo $row['direccion']; ?><br>
+                            Teléfono:
+                            <?php echo $row['telefono']; ?><br>
+                            Correo electrónico:
+                            <?php echo $row['correo']; ?><br>
+                        </div>
+                        <form id="formularioDonacion">
+                            <!-- Campos del formulario -->
+                            <!-- ... -->
+                            <input type="submit" value="Enviar Solicitud">
+                        </form>
+                    <?php } ?>
+                </div>
+
+            </div>
+        </div>
+
 
 
         <!-- Logout Modal-->
@@ -246,40 +253,16 @@ session_start();
             </div>
         </div>
 
-        
-        <div id = "mostrar-formulario">
-            <form class="form-signin" method="post">
-                <h1 class="h3 mb-3 font-weight-normal">Solicitar Adopcion</h1>
-                <label for="nombre" class="sr-only">Nombre</label>
-                <input name="nombre" type="text" id="nombre" class="form-control" placeholder="Nombre" autofocus>
-                <label for="cedula" class="sr-only">Cedula</label>
-                <input name="cedula" type="number" id="cedula" class="form-control" placeholder="Cedula" autofocus>
+    </div>
 
-                <label for="tipoDonacion" class="sr-only">Tipo de Donacion</label>
-                <select name="tipoDonacion" id="tipoDonacion" class="form-control">
-                    <option value="2">Comida</option>
-                    <option value="1">Dinero</option>
-                    <option value="0">Medicamentos</option>
-                </select>
 
-                <label for="telefono" class="sr-only">Telefono</label>
-                <input name="telefono" type="text" id="telefono" class="form-control" placeholder="Telefono" >
-                
-                <label for="correo" class="sr-only">Correo</label>
-                <input name="correo" type="email" id="correo" class="form-control" placeholder="Correo" autofocus>
-                
-                <div class="checkbox mb-3"></div>
-                <button class="boton-solicitar"  type="submit">
-                    <h8>Enviar formulario</h8>
-                </button>
-                <button class="boton-solicitar" onclick="cerrarFormulario('formulario-donacion')">Cerrar</button>
 
-            </form>
-        </div>
-                    
+
 
     <!-- End of Main Content -->
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/logica/modal_refugio.js"></script>
     <script src="js/librerias/jquery-3.3.1.min.js"></script>
     <script src="js/librerias/gijgo.min.js"></script>
     <script src="js/logica/registrar.js"></script>
@@ -287,6 +270,7 @@ session_start();
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -303,16 +287,7 @@ session_start();
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/logica/administradorUsuarios.js"></script>
 
-    <script>
-        function mostrarFormulario() {
-            document.getElementById("mostrar-formulario").style.display = "block";
-   
-        }
-        function cerrarFormulario(idFormulario) {
-            document.getElementById("mostrar-formulario").style.display = "none";
-   
-        }
-    </script>
+    <!-- Otros scripts -->
 
 </body>
 

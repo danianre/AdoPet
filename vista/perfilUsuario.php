@@ -1,32 +1,20 @@
 <?php
 require_once(__DIR__ . "/../modelo/DAO/DataSource.php");
 session_start();
-<<<<<<< HEAD
-if(!empty($_POST)){
-    $alert= '';
-    if(!empty($_POST['nombre']) || !empty($_POST['apellido']) || !empty($_POST['fecha_nac']) || !empty($_POST['correo']) || !empty($_POST['cedula']) || !empty($_POST['telefono']) || !empty($_POST['direccion']) || !empty($_POST['foto']) || !empty($_POST['genero']) || !empty($_POST['tipo_usuario'])){
-=======
 if (!empty($_POST)) {
     $alert = '';
     if (!empty($_POST['nombre']) || !empty($_POST['apellido']) || !empty($_POST['fecha_nacimiento']) || !empty($_POST['idGenero']) || !empty($_POST['correo']) || !empty($_POST['telefono']) || !empty($_POST['direccion']) || !empty($_POST['foto']) || !empty($_POST['administrador'])) {
->>>>>>> 79d50c105353f2344a6e5cafb7ca3074f5fcc26d
         $idUsuario = $_POST['idUsuario'];
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
-        $fecha_nac = $_POST['fecha_nac'];
+        $fecha_nacimiento = $_POST['fecha_nacimiento'];
+        $idGenero = $_POST['idGenero'];
         $correo = $_POST['correo'];
         $password = md5($_POST['password']);
-        $fecha_creacion = $_POST['fecha_creacion'];
-        $cedula = $_POST['cedula'];
         $telefono = $_POST['telefono'];
         $direccion = $_POST['direccion'];
         $foto = $_POST['foto'];
-<<<<<<< HEAD
-        $genero = $_POST['genero'];
-        $tipo_usuario= $_POST['tipo_usuario'];
-=======
         $administrador = $_POST['administrador'];
->>>>>>> 79d50c105353f2344a6e5cafb7ca3074f5fcc26d
 
         $query = mysqli_query($conexion, "SELECT * FROM usuario WHERE (correo = '$correo' AND idUsuario != $idUsuario) OR (telefono = '$telefono' AND idUsuario != $idUsuario)");
         $result = mysqli_fetch_array($query);
@@ -36,11 +24,11 @@ if (!empty($_POST)) {
         } else {
             if (empty($_POST['password'])) {
                 $sql_update = mysqli_query($conexion, "UPDATE usuario 
-                                                       SET nombre = '$nombre', apellido = '$apellido', fecha_nac = '$fecha_nac', correo = '$correo', cedula = '$cedula', telefono = '$telefono', direccion = '$direccion', foto = '$foto'
+                                                       SET nombre = '$nombre', apellido = '$apellido', fecha_nacimiento = '$fecha_nacimiento', correo = '$correo', telefono = '$telefono', direccion = '$direccion', foto = '$foto'
                                                        WHERE idUsuario = $idUsuario ");
             } else {
                 $sql_update = mysqli_query($conexion, "UPDATE usuario 
-                                                       SET nombre = '$nombre', apellido = '$apellido', fecha_nac = '$fecha_nac', correo = '$correo', cedula = '$cedula', password = '$password', telefono = '$telefono', direccion = '$direccion', foto = '$foto'
+                                                       SET nombre = '$nombre', apellido = '$apellido', fecha_nacimiento = '$fecha_nacimiento', correo = '$correo', password = '$password', telefono = '$telefono', direccion = '$direccion', foto = '$foto'
                                                        WHERE idUsuario = $idUsuario ");
             }
 
@@ -59,11 +47,7 @@ if (empty($_REQUEST['id'])) {
     //mysqli_close($conexion);
 }
 $iduser = $_REQUEST['id'];
-<<<<<<< HEAD
-$sql = mysqli_query($conexion, "SELECT idUsuario, nombre, apellido, fecha_nac, correo, password, fecha_creacion, cedula,telefono, direccion, foto, genero                                
-=======
 $sql = mysqli_query($conexion, "SELECT idUsuario, nombre, apellido, fecha_nac, correo, password, telefono, direccion, foto
->>>>>>> 79d50c105353f2344a6e5cafb7ca3074f5fcc26d
                                 FROM usuario
                                 WHERE idUsuario = $iduser");
 //mysqli_close($conexion);
@@ -76,19 +60,11 @@ if ($result_sql == 0) {
         $iduser = $data['idUsuario'];
         $nombre = $data['nombre'];
         $apellido = $data['apellido'];
-<<<<<<< HEAD
-        $fecha_nac = $data['fecha_nac'];
-=======
         $fecha_nacimiento = $data['fecha_nac'];
->>>>>>> 79d50c105353f2344a6e5cafb7ca3074f5fcc26d
         $correo = $data['correo'];
-        $fecha_creacion = $data['fecha_creacion'];
-        $cedula = $data['cedula'];
         $telefono = $data['telefono'];
         $direccion = $data['direccion'];
         $foto = $data['foto'];
-        $genero = $data['genero'];
-        $tipo_usuario = $data['tipo_usuario'];
     }
 }
 ?>
