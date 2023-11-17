@@ -35,7 +35,20 @@ session_start();
     <link rel="stylesheet" href="css/donar.css">
     <link rel="stylesheet" href="css/sb-admin-2.min.css">
 
+    <style>
+        #mostrar-formulario{
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            background-color: white;
+            padding: 20px;
 
+        }
+    </style>    
+    
 
 </head>
 
@@ -161,7 +174,7 @@ session_start();
                     Teléfono: (123) 456-7890
                     Correo electrónico: refugio1@example.com
                 </div>
-                <a class="boton-solicitar" href="#">Solicitar Donación</a>
+                <a class="boton-solicitar" href="#" onclick="mostrarFormulario('mostrar-formulario')">Solicitar Donación</a>
             </div>
 
             <div class="caja-refugio">
@@ -175,7 +188,7 @@ session_start();
                     Teléfono: (123) 326-6580
                     Correo electrónico: refugio3@example.com
                 </div>
-                <a class="boton-solicitar" href="#">Solicitar Donación</a>
+                <a class="boton-solicitar" href="#" onclick="mostrarFormulario('mostrar-formulario')">Solicitar Donación</a>
             </div>
         </div>
 
@@ -191,7 +204,7 @@ session_start();
                     Teléfono: (123) 256-7870
                     Correo electrónico: refugio2@example.com
                 </div>
-                <a class="boton-solicitar" href="#">Solicitar Donación</a>
+                <a class="boton-solicitar" href="#" onclick="mostrarFormulario('mostrar-formulario')">Solicitar Donación</a>
             </div>
 
             <div class="caja-refugio">
@@ -205,7 +218,7 @@ session_start();
                     Teléfono: (123) 986-7890
                     Correo electrónico: refugio4@example.com
                 </div>
-                <a class="boton-solicitar" href="#">Solicitar Donación</a>
+                <a class="boton-solicitar" href="#" onclick="mostrarFormulario('mostrar-formulario')">Solicitar Donación</a>
             </div>
 
         </div>
@@ -233,9 +246,38 @@ session_start();
             </div>
         </div>
 
+        
+        <div id = "mostrar-formulario">
+            <form class="form-signin" method="post">
+                <h1 class="h3 mb-3 font-weight-normal">Solicitar Adopcion</h1>
+                <label for="nombre" class="sr-only">Nombre</label>
+                <input name="nombre" type="text" id="nombre" class="form-control" placeholder="Nombre" autofocus>
+                <label for="cedula" class="sr-only">Cedula</label>
+                <input name="cedula" type="number" id="cedula" class="form-control" placeholder="Cedula" autofocus>
 
+                <label for="tipoDonacion" class="sr-only">Tipo de Donacion</label>
+                <select name="tipoDonacion" id="tipoDonacion" class="form-control">
+                    <option value="2">Comida</option>
+                    <option value="1">Dinero</option>
+                    <option value="0">Medicamentos</option>
+                </select>
 
-    </div>
+                <label for="telefono" class="sr-only">Telefono</label>
+                <input name="telefono" type="text" id="telefono" class="form-control" placeholder="Telefono" >
+                
+                <label for="correo" class="sr-only">Correo</label>
+                <input name="correo" type="email" id="correo" class="form-control" placeholder="Correo" autofocus>
+                
+                <div class="checkbox mb-3"></div>
+                <button class="boton-solicitar"  type="submit">
+                    <h8>Enviar formulario</h8>
+                </button>
+                <button class="boton-solicitar" onclick="cerrarFormulario('formulario-donacion')">Cerrar</button>
+
+            </form>
+        </div>
+                    
+
     <!-- End of Main Content -->
 
     <script src="js/librerias/jquery-3.3.1.min.js"></script>
@@ -260,6 +302,18 @@ session_start();
     <script src="js/demo/datatables-demo.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/logica/administradorUsuarios.js"></script>
+
+    <script>
+        function mostrarFormulario() {
+            document.getElementById("mostrar-formulario").style.display = "block";
+   
+        }
+        function cerrarFormulario(idFormulario) {
+            document.getElementById("mostrar-formulario").style.display = "none";
+   
+        }
+    </script>
+
 </body>
 
 </html>
