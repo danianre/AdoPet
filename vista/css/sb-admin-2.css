@@ -5758,7 +5758,7 @@ a.close.disabled {
 }
 
 .modal-backdrop.show {
-  opacity: 0.5;
+  opacity: 0;
 }
 
 .modal-header {
@@ -9794,10 +9794,9 @@ a:focus {
   display: flex;
 }
 
+
 #wrapper #content-wrapper {
-  background-color: #f8f9fc;
-  width: 100%;
-  overflow-x: hidden;
+  width: 10%;
 }
 
 #wrapper #content-wrapper #content {
@@ -10507,7 +10506,7 @@ a:focus {
 
 @media (min-width: 768px) {
   .sidebar {
-    width: 14rem !important;
+    width: 20rem !important;
   }
   .sidebar .nav-item .collapse {
     position: relative;

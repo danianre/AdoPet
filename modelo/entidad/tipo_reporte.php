@@ -7,7 +7,7 @@
 class tipo_reporte
 {
     public $idTipo_reporte;
-    public $nombre_reporte
+    public $nombre_reporte;
 
     public function __construct($idTipo_reporte, $nombre_reporte){
 

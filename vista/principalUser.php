@@ -10,7 +10,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
-    <link rel="stylesheet" href="css/perfilUsuario.css">
+    <link rel="stylesheet" href="css/perfilUsuarios.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -30,62 +30,70 @@ session_start();
 	<link rel="stylesheet" href="css/bootstrap-grid.min.css">
 	<link rel="stylesheet" href="css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/principal.css">
+
+    
 </head>
 <body>
     <!-- Page Wrapper -->
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+       <ul class="navbar-nav sidebar sidebar-dark accordion" style="background-color: #8F796C; " class="slider" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="principalUser.php">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center"  style="background-color:#584B42;"  href="principalUser.php">
                 <div>
                     <img src="imagenes/logo.png" alt="logo" width="50px">
                 </div>
-                <div class="sidebar-brand-text mx-3">ADOPET SM</div>
+                <div style="font-size: 20px;" class="sidebar-brand-text mx-3">AdoPet</div>
             </a>
 
+                
             <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+            <hr class="sidebar-divider my-0"  >
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="principalUser.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>INICIO</span></a>
+            <li class="nav-item" class="prueba">
+                <a class="nav-link" href="principalUser.php"  style="border-radius:30px;" onmouseover="this.style.backgroundColor='#CFC6BF'" onmouseout="this.style.backgroundColor='transparent'">
+                <i style="font-size: 28px;color:black;" class="fas fa-home"></i>
+                    <span style="font-size: 23px; color:black;
+                  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Inicio</span></a>
             </li>
-
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Nav Item - Reportar -->
             <li class="nav-item">
-                <a class="nav-link" href="perfilUsuario.php?id=<?php echo $_SESSION["ID_USUARIO"];?>">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Perfil</span></a>
+                <a class="nav-link" style="border-radius:30px; " href="perfilUsuario.php?id=<?php echo $_SESSION["ID_USUARIO"];?>"  onmouseover="this.style.backgroundColor='#CFC6BF'" onmouseout="this.style.backgroundColor='transparent'">
+                <i style="font-size: 28px;color:black;" class="fas fa-user"></i>
+                    <span style="font-size: 23px;color:black;
+                  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Perfil</span></a>
             </li>
 
             <!-- Nav Item - Adoptar -->
             <li class="nav-item">
-                <a class="nav-link" href="adoptar.php?id=<?php echo $_SESSION['ID_USUARIO'];?>">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Adoptar</span></a>
+                <a class="nav-link" style="border-radius:30px; " href="adoptar.php?id=<?php echo $_SESSION['ID_USUARIO'];?>"onmouseover="this.style.backgroundColor='#CFC6BF'" onmouseout="this.style.backgroundColor='transparent'">
+                <i style="font-size: 28px;color:black;" class="fas fa-heart"></i>
+                    <span style="font-size: 23px;color:black;
+                  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Adoptar</span></a>
             </li>
 
             <!-- Nav Item - Donar -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Donar</span></a>
+                <a class="nav-link" href="donar.php" style="border-radius:30px; "  onmouseover="this.style.backgroundColor='#CFC6BF'" onmouseout="this.style.backgroundColor='transparent'">
+                <i style="font-size: 28px;color:black;" class="fas fa-hand-holding-medical"></i>
+                    <span style="font-size: 23px;color:black;
+                  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Donar</span></a>
             </li>
 
             <!-- Nav Item - Reportar -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Reportar</span></a>
+                <a class="nav-link" href="#" style="border-radius:30px; " onmouseover="this.style.backgroundColor='#CFC6BF'" onmouseout="this.style.backgroundColor='transparent'">
+                <i style="font-size: 28px;color:black;" class="fas fa-flag"></i>
+                    <span style="font-size: 23px;color:black;
+                  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Reportar</span></a>
             </li>
 
             <!-- Nav Item - Ceder -->
@@ -97,9 +105,10 @@ session_start();
 
             <!-- Nav Item - Cerrar sesión -->
             <li class="nav-item">
-            <a  class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
-                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                <span>Cerrar Sesión</span></a>
+            <a  class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal"  style="border-radius:30px; "onmouseover="this.style.backgroundColor='#CFC6BF'"    onmouseout="this.style.backgroundColor='transparent'" >
+                <i style="font-size: 28px;color:black;" class="fas fa-sign-out-alt fa-sm fa-fw mr-2 "></i>
+                <span style="font-size: 22px ;color:black; 
+                  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;" >Cerrar Sesión</span></a>
             </a>
             </li>
 
@@ -120,20 +129,20 @@ session_start();
             <!-- Main Content -->
             <div id="content">
 
-                <section id="hero" class="d-flex flex-column justify-content-center align-items-left">
-                    <h1><?php if (isset($_SESSION['ID_USUARIO'])) {
+                <section id="hero" class="d-flex flex-column justify-content-center align-items-left" style=" width: 127%;">
+                    <h1 style="color:black;"><?php if (isset($_SESSION['ID_USUARIO'])) {
                                     echo $_SESSION['NOMBRE_USUARIO']; 
                                     echo " ";
                                     echo $_SESSION['APELLIDO_USUARIO'];
                                     }   
                                     ?></h1>
-                    <p>¡Bienvenidos! <span class="typed"></span></p>
+                    <p style="color:black;">¡Bienvenido! <span class="typed"></span></p>
                 </section><!-- End Hero -->
                     
                 </div>
                 
                 <!-- End of Topbar -->
-                
+              
                 <!-- Logout Modal-->
                 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">

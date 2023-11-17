@@ -52,7 +52,7 @@ p{ font-size: 20px;}
 }
 
 .logo img{
-    width: 15%;
+    width: 8%;
 }
 
 .menu{
@@ -92,6 +92,10 @@ p{ font-size: 20px;}
     border-radius: 50px;
 }
 
+.cta:hover{
+    color: black;
+}
+
 .modal-unirse{
     opacity: 0;
     visibility: hidden;
@@ -105,6 +109,7 @@ p{ font-size: 20px;}
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .modal{

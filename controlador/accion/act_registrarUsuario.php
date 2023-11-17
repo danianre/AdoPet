@@ -7,21 +7,19 @@
 
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
-        $fecha_nacimiento = $_POST['fecha_nacimiento'];
-        $idGenero = $_POST['idGenero'];
+        $fecha_nac= $_POST['fecha_nac'];
+        $genero = $_POST['genero'];
         $correo = $_POST['correo'];
         $password = $_POST['password'];
         $telefono = $_POST['telefono'];
         $direccion = $_POST['direccion'];
-        $foto = $_POST['foto'];
-        $administrador = $_POST['administrador'];
  
         if(isset($_POST['administrador'])) {
-            $usuario = new Usuario(NULL, $nombre, $apellido, $fecha_nacimiento, $idGenero, $correo, $password, $telefono, $direccion, $foto, $administrador);
+            $usuario = new Usuario(NULL, $nombre, $apellido, $fecha_nac, $idGenero, $correo, $password, $telefono, $direccion, $foto, $administrador);
             $registro = registrarUsuario($usuario);
             header("Location: ../../vista/ListaUsuarios.php");
         }else{
-            $usuario = new Usuario(NULL, $nombre, $apellido, $fecha_nacimiento, $idGenero, $correo, $password, $telefono, $direccion, $foto, 0);
+            $usuario = new Usuario(NULL, $nombre, $apellido, $fecha_nac,$telefono,$direccion,$genero,$correo, $password, 0);
             $registro = registrarUsuario($usuario);
             if($registro)
                 header("Location: ../../index.php?msg=Se realizo el registro satisfactoriamente");

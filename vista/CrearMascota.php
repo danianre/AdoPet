@@ -1,18 +1,7 @@
 <?php
 session_start();
 
-require 'config/database.php';
-$db = new Database();
-$con = $db->conectar();
-
-$sql = $con->prepare("SELECT m.idMascota, m.nombre, m.estado_salud, m.raza, m.personalidad, m.foto, m.genero_m, r.nombre as  nombrerefugio,  r.telefono, r.direccion
-                    FROM mascota m
-                    INNER JOIN refugio r ON m.idRefugio = r.idRefugio
-                    WHERE m.activo = 1");
-$sql->execute();
-$resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
 
 
 
@@ -24,8 +13,6 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
-    <link rel="stylesheet" href="css/perfilUsuario.css">
-    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -47,12 +34,14 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/adoptar.css">
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="css/select2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha384-lZl5V5z7aCVvpr7YlG2+BPpLbfL/MbZlAWEFwFf5M2cPKp+AIW5ocF92La6Dh4Jq" crossorigin="anonymous">
 
 </head>
 
 <body
-    style="background-image: url('imagenes/fondo-home.jpg'); background-size: cover; background-position: center; position:relative;">
+    style="background-image: url('imagenes/fondo-home.jpg'); background-size: cover; background-position: center; position:relative; overflow: hidden;">
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -165,109 +154,152 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-
-            <!-- Main Content -->
-            <div id="content" style="width: 100%;">
 
 
 
-                <!-- Logout Modal-->
-                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">¿Listo para salir?</h5>
-                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
+        <!-- ----------><!-- ----------><!-- ----------><!-- ----------><!-- ----------><!-- ----------><!-- ----------><!-- ----------><!-- ---------->
+        <!-- ----------><!-- ---------->
+        <!-- ----------><!-- ----------><!-- ----------><!-- ----------><!-- ----------><!-- ----------><!-- ----------><!-- ---------->
+        <div class="modal fade" id="crearproducto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true" style="top:100px;position:relative;">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="card card-success">
+                        <div class="card-header">
+                            <h3 class="card-title">Agregar Mascota</h3>
+                            <button data-dismiss="modal" aria-label="close" class="close">
+                                <span aria-hidden="true"> &times;</span>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-succes text center" id="add" style="display:none">
+                                <span><i class="fas fa-check m1"></i>Se agrego correctamente</span>
                             </div>
-                            <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para
-                                finalizar su sesión actual.</div>
-                            <div class="modal-footer">
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                                <a class="btn btn-primary" href="../controlador/accion/act_logout.php">Cerrar Sesión</a>
+                            <div class="alert alert-danger text center" id="noadd" style="display:none">
+                                <span><i class="fas fa-times m1"></i>La mascota ya existe</span>
                             </div>
+                            <form id="form-crear-producto">
+                                <div class="form-group">
+                                    <label for="nombre">Nombre</label>
+                                    <input id="nombre" type="text" class="form-control" placeholder="Ingrese Nombre"
+                                        required>
+                                </div>
+                        
+                                <div class="form-group">
+                                    <label for="tipo">Tipo de Mascota</label>
+                                    <select name="tipo" id="tipo" class="form-control select2" style="width:100%;">
+                                        <option value="1">Gato</option>
+                                        <option value="0">Perro</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="genero_m">Genero</label>
+                                    <select name="genero_m" id="genero_m" class="form-control select2" style="width:100%;">
+                                        <option value="1">Macho</option>
+                                        <option value="0">Hembra</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="idRefugio">Refugio</label>
+                                    <select name="idRefugio" id="idRefugio" class="form-control select2" style="width:100%;"></select>
+                                </div>
+
+                        </div>
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn bg-gradient-primary float-rigth m1" >Guardar</button>
+                            <button type="button" data-dismiss="modal"
+                                class="btn btn-outline-secondary float-rigth m1">Close</button>
+                            </form>
                         </div>
                     </div>
                 </div>
-
-                <!-- End of Topbar -->
             </div>
-            <!-- End of Main Content -->
+        </div>
 
-            <!-- Logout Modal-->
+    </div>
 
-
-            <!-- Content-->
-
-            <div class="contenedor-adoptar">
-                <?php foreach ($resultado as $row) { ?>
-                    <div class="caja-refugio" >
-                        <div class="nombre-refugio">
-                            <?php echo $row['raza']; ?>
+    <!-------------------------->
+    <div class="content-wrapper" style="position: relative;bottom: 900px;width: 70%;left: 250px;">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Agregar Mascota <button id="button-crear" type="button" data-toggle="modal"
+                                data-target="#crearproducto" class="btn bg-gradient-primary ml-2">Agregar
+                                Mascota</button></h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="adm_catalogo.php">Home</a></li>
+                            <li class="breadcrumb-item active">Gestion Mascota</li>
+                        </ol>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container-fluid">
+                <div class="card card-success">
+                    <div class="card-header">
+                        <h3 class="card-title">Buscar Mascota</h3>
+                        <div class="input-group">
+                            <input type="text" id="buscar-producto" class="form-control float-left"
+                                placeholder="Ingrese nombre de la Mascota">
+                            <div class="input-group-appen">
+                                <button class="btn btn-default"><i class="fas fa-search"></i></button>
+                            </div>
                         </div>
-                        <?php
-                        $id = $row['foto'];
-                        $imagen = "imagenes/pets/{$id}";
-                        if (!file_exists($imagen)){
-                            $imagen = "imagenes/nofoto.jpg";
-                        }
-                        ?>
-                        <img class="imagen-refugio" src="<?php echo $imagen; ?>" alt="Imagen del refugio">
-                        <div class="informacion-refugio">
-                            <!-- Aquí coloca la información del refugio -->
-                            Nombre: <?php echo $row['nombre']; ?><br>
-                            Genero: <?php echo ($row['genero_m'] == 1) ? 'Macho' : 'Hembra'; ?><br>
-                            Personalidad: <?php echo $row['personalidad']; ?><br>
-                            Correo electrónico: <?php echo $row['nombrerefugio']; ?> <br>  Teléfono:  <?php echo $row['telefono']; ?>
+                    </div>
+                    <div class="card-body">
+                        <div id="productos" class="row d-flex align-items-search">
+
                         </div>
-                        <a class="boton-solicitar" href="#">Solicitar Adopcion</a>
+                    </div>
+                    <div class="card-footer">
 
                     </div>
-                <?php } ?>
+                </div>
             </div>
-
-
-
-
-
-            <!-- End of Topbar -->
-
-            <!--  Section Adoptar
-          
+        </section>
     </div>
+
     </div>
-    </div>
-    </div>
-    </section>
 
 
+
+    <!-------------------------->
+    
+   
     <script src="js/librerias/jquery-3.3.1.min.js"></script>
+<script src="js/logica/select2.js"></script>
+<script src="js/logica/mascota.js"></script>
+
+
     <script src="js/librerias/gijgo.min.js"></script>
-    <script src="js/logica/registrar.js"></script>
     <script src="js/librerias/sweetAlert.js"></script>
-     Bootstrap core JavaScript-->
-            <script src="vendor/jquery/jquery.min.js"></script>
-            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-            <!-- Core plugin JavaScript-->
-            <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-            <!-- Custom scripts for all pages-->
-            <script src="js/librerias/sb-admin-2.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/librerias/sb-admin-2.min.js"></script>
 
-            <!-- Page level plugins -->
-            <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-            <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-            <!-- Page level custom scripts -->
-            <script src="js/demo/datatables-demo.js"></script>
-            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
 
-            <script src="js/logica/administradorUsuarios.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/logica/administradorUsuarios.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

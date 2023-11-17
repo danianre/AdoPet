@@ -20,20 +20,17 @@ class usuario
     public $genero;
     public $tipo_usuario;
 
-    public function __construct($idUsuario, $nombre, $apellido, $fecha_nac, $correo, $password, $fecha_creacion, $cedula, $telefono, $direccion, $foto, $genero, $tipo_usuario){
+    public function __construct($idUsuario, $nombre, $apellido, $fecha_nac, $cedula,$telefono,$direccion,$genero,$correo, $password){
         $this->idUsuario = $idUsuario;
         $this->nombre = $nombre;
 		$this->apellido = $apellido;
 		$this->fecha_nac = $fecha_nac;
-		$this->correo= $correo;
-        $this->password = $password;
-        $this->fecha_creacion = $fecha_creacion;
         $this->cedula = $cedula;
         $this->telefono = $telefono;
         $this->direccion = $direccion;
-        $this->foto = $foto;
         $this->genero = $genero;
-        $this->tipo_usuario = $tipo_usuario;
+		$this->correo= $correo;
+        $this->password = $password;
     }
     
    // Métodos GET
@@ -174,5 +171,8 @@ class usuario
     {
         $this->tipo_usuario = $tipo_usuario;
         return $this;
+    }
+    public function esAdministrador() {
+  
     }
 }
